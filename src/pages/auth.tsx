@@ -19,6 +19,9 @@ const Auth = () => {
   }, [])
 
   const login = useCallback(async () => {
+    if (!email || !password) {
+      return null
+    }
     try {
       await signIn('credentials', {
         email,
@@ -31,6 +34,9 @@ const Auth = () => {
   }, [email, password])
 
   const register = useCallback(async () => {
+    if (!email || !name || !password) {
+      return null
+    }
     try {
       await axios.post('/api/register', {
         email,
